@@ -40,7 +40,7 @@ textarea {
 }
 
 button {
-  min-height: 46px;
+  min-height: 48px;
   border: 0;
   cursor: pointer;
 }
@@ -49,7 +49,7 @@ button {
   width: min(480px, 100%);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 18px 14px 104px;
+  padding: 16px 10px 104px;
   background: #080808;
   border-left: 1px solid #1a1a1a;
   border-right: 1px solid #1a1a1a;
@@ -59,8 +59,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 8px 0 18px;
+  gap: 10px;
+  padding: 6px 0 14px;
 }
 
 .eyebrow,
@@ -86,12 +86,12 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.85rem, 5vw, 3rem);
+  font-size: clamp(1.55rem, 7vw, 2.15rem);
   letter-spacing: 0;
 }
 
 h2 {
-  font-size: 1.08rem;
+  font-size: 1.02rem;
 }
 
 .icon-button,
@@ -120,13 +120,13 @@ h2 {
 .summary-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .summary-card {
-  min-height: 76px;
-  padding: 13px 14px;
+  min-height: 68px;
+  padding: 10px 12px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -135,8 +135,8 @@ h2 {
 
 .summary-card strong {
   display: block;
-  margin-top: 8px;
-  font-size: 1.72rem;
+  margin-top: 5px;
+  font-size: 1.42rem;
   color: var(--accent);
 }
 
@@ -152,8 +152,8 @@ h2 {
 .quick-panel,
 .detail-panel,
 .notice-panel {
-  padding: 14px;
-  margin-bottom: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
   background: rgba(17, 17, 17, 0.96);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -173,12 +173,12 @@ h2 {
 }
 
 .calendar-toolbar {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .nav-button {
-  width: 48px;
-  font-size: 2rem;
+  width: 44px;
+  font-size: 1.85rem;
   line-height: 1;
 }
 
@@ -188,14 +188,14 @@ h2 {
 
 .month-title strong {
   display: block;
-  font-size: 1.32rem;
+  font-size: 1.18rem;
 }
 
 .weekday-row,
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 6px;
+  gap: 3px;
 }
 
 .weekday-row {
@@ -209,12 +209,12 @@ h2 {
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  min-height: 72px;
-  padding: 7px;
+  min-height: 62px;
+  padding: 5px;
   background: #0c0c0c;
   color: var(--text);
   border: 1px solid #242424;
-  border-radius: 8px;
+  border-radius: 7px;
   text-align: left;
 }
 
@@ -239,15 +239,16 @@ h2 {
 }
 
 .day-number {
+  font-size: 0.92rem;
   font-weight: 900;
 }
 
 .work-badge {
   align-self: end;
   justify-self: start;
-  margin-top: 8px;
+  margin-top: 4px;
   max-width: 100%;
-  padding: 4px 6px;
+  padding: 3px 5px;
   background: #eeeeee;
   color: #070707;
   border: 1px solid #ffffff;
@@ -255,16 +256,16 @@ h2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 900;
 }
 
 .memo-dot {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 8px;
-  height: 8px;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
   background: var(--accent-soft);
   border-radius: 999px;
 }
@@ -398,7 +399,7 @@ textarea {
   grid-template-columns: repeat(2, 1fr);
   width: min(480px, 100%);
   margin: 0 auto;
-  padding: 9px 10px calc(9px + env(safe-area-inset-bottom));
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
   background: rgba(8, 8, 8, 0.96);
   border-top: 1px solid #262626;
   border-right: 1px solid #1a1a1a;
@@ -407,7 +408,7 @@ textarea {
 }
 
 .tab-button {
-  min-height: 52px;
+  min-height: 50px;
   background: transparent;
   color: var(--muted);
   border-radius: 8px;
@@ -422,7 +423,7 @@ textarea {
 
 .settings-dialog,
 .input-dialog {
-  width: min(420px, calc(100% - 28px));
+  width: min(440px, calc(100% - 16px));
   padding: 0;
   background: var(--panel);
   color: var(--text);
@@ -443,7 +444,7 @@ textarea {
 
 .settings-dialog form,
 .dialog-body {
-  padding: 16px;
+  padding: 12px;
 }
 
 .full-field {
@@ -464,19 +465,19 @@ textarea {
 
 @media (max-width: 760px) {
   .app-shell {
-    padding: 14px 12px 104px;
+    padding: 12px 8px 102px;
   }
 
   .calendar-panel,
   .quick-panel,
   .detail-panel,
   .notice-panel {
-    padding: 12px;
+    padding: 8px;
   }
 
   .weekday-row,
   .calendar-grid {
-    gap: 4px;
+    gap: 3px;
   }
 
   .action-row,
@@ -493,10 +494,40 @@ textarea {
   }
 
   .day-cell {
-    min-height: 64px;
+    min-height: 58px;
   }
 
   .day-number {
-    font-size: 0.9rem;
+    font-size: 0.84rem;
+  }
+
+  .work-badge {
+    padding: 2px 4px;
+    font-size: 0.66rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .app-shell {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  .calendar-panel {
+    padding: 6px;
+  }
+
+  .weekday-row,
+  .calendar-grid {
+    gap: 2px;
+  }
+
+  .weekday-row {
+    font-size: 0.78rem;
+  }
+
+  .day-cell {
+    min-height: 56px;
+    padding: 4px;
   }
 }
