@@ -395,7 +395,7 @@ textarea {
   left: 0;
   z-index: 20;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: min(480px, 100%);
   margin: 0 auto;
   padding: 9px 10px calc(9px + env(safe-area-inset-bottom));
@@ -420,7 +420,8 @@ textarea {
   color: #050505;
 }
 
-.settings-dialog {
+.settings-dialog,
+.input-dialog {
   width: min(420px, calc(100% - 28px));
   padding: 0;
   background: var(--panel);
@@ -430,11 +431,18 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.settings-dialog::backdrop {
+.input-dialog {
+  max-height: min(760px, calc(100dvh - 28px));
+  overflow: auto;
+}
+
+.settings-dialog::backdrop,
+.input-dialog::backdrop {
   background: rgba(0, 0, 0, 0.62);
 }
 
-.settings-dialog form {
+.settings-dialog form,
+.dialog-body {
   padding: 16px;
 }
 

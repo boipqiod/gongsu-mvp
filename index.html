@@ -53,20 +53,53 @@
           </div>
 
           <div class="calendar-grid" id="calendarGrid" aria-label="월간 공수 달력"></div>
-        </div>
-      </section>
 
-      <section class="mobile-view" data-view="input">
-        <div class="quick-panel" aria-label="빠른 입력">
-          <div class="section-title">
-            <h2>원터치 프리셋</h2>
-            <span>날짜 선택 후 바로 적용</span>
-          </div>
-          <div class="preset-row" id="presetRow"></div>
           <div class="bulk-toolbar">
             <button class="ghost-button" id="bulkModeButton" type="button">일괄 선택 켜기</button>
             <span id="bulkStatus">선택 0일</span>
-            <button class="ghost-button" id="clearBulkButton" type="button">선택 삭제</button>
+            <button class="ghost-button" id="openInputButton" type="button">공수 입력</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile-view" data-view="team">
+        <div class="notice-panel">
+          <div class="section-title">
+            <h2>팀 공수 예고</h2>
+            <span>MVP 데모용</span>
+          </div>
+          <div class="team-notice">
+            <strong>조장 확정 공수</strong>
+            <p>오늘 1.5공수 · P3 라인 돌발 연장 포함</p>
+            <button id="applyTeamNotice" type="button">내 달력에 반영</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-tabs" aria-label="하단 탭">
+      <button class="tab-button is-active" type="button" data-tab="calendar">달력</button>
+      <button class="tab-button" type="button" data-tab="team">팀</button>
+    </nav>
+
+    <dialog class="input-dialog" id="inputDialog">
+      <div class="dialog-body">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow">입력</p>
+            <h2>공수 기록</h2>
+          </div>
+          <button class="icon-button" id="closeInputButton" type="button" aria-label="입력 닫기">닫기</button>
+        </div>
+
+        <div class="quick-panel" aria-label="빠른 입력">
+          <div class="section-title">
+            <h2>원터치 프리셋</h2>
+            <span>선택 날짜 또는 일괄 선택에 적용</span>
+          </div>
+          <div class="preset-row" id="presetRow"></div>
+          <div class="action-row">
+            <button class="ghost-button" id="clearBulkButton" type="button">일괄 선택 삭제</button>
           </div>
         </div>
 
@@ -97,29 +130,8 @@
             <button class="ghost-button" id="clearDateButton" type="button">선택 날짜 삭제</button>
           </div>
         </div>
-      </section>
-
-      <section class="mobile-view" data-view="team">
-        <div class="notice-panel">
-          <div class="section-title">
-            <h2>팀 공수 예고</h2>
-            <span>MVP 데모용</span>
-          </div>
-          <div class="team-notice">
-            <strong>조장 확정 공수</strong>
-            <p>오늘 1.5공수 · P3 라인 돌발 연장 포함</p>
-            <button id="applyTeamNotice" type="button">내 달력에 반영</button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <nav class="bottom-tabs" aria-label="하단 탭">
-      <button class="tab-button is-active" type="button" data-tab="calendar">달력</button>
-      <button class="tab-button" type="button" data-tab="input">입력</button>
-      <button class="tab-button" type="button" data-tab="team">팀</button>
-      <button class="tab-button" type="button" data-tab="settings">설정</button>
-    </nav>
+      </div>
+    </dialog>
 
     <dialog class="settings-dialog" id="settingsDialog">
       <form method="dialog">

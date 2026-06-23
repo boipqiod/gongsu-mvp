@@ -36,6 +36,7 @@ const labelInput = document.querySelector("#labelInput");
 const memoInput = document.querySelector("#memoInput");
 const rateInput = document.querySelector("#rateInput");
 const settingsDialog = document.querySelector("#settingsDialog");
+const inputDialog = document.querySelector("#inputDialog");
 const bulkModeButton = document.querySelector("#bulkModeButton");
 const bulkStatus = document.querySelector("#bulkStatus");
 
@@ -53,18 +54,15 @@ document.querySelector("#saveButton").addEventListener("click", saveSelectedDate
 document.querySelector("#clearDateButton").addEventListener("click", clearSelectedDate);
 document.querySelector("#applyTeamNotice").addEventListener("click", applyTeamNotice);
 document.querySelector("#settingsButton").addEventListener("click", () => settingsDialog.showModal());
+document.querySelector("#openInputButton").addEventListener("click", openInputDialog);
+document.querySelector("#closeInputButton").addEventListener("click", () => inputDialog.close());
 document.querySelector("#seedButton").addEventListener("click", seedSampleData);
 document.querySelector("#resetButton").addEventListener("click", resetAllData);
 bulkModeButton.addEventListener("click", toggleBulkMode);
 document.querySelector("#clearBulkButton").addEventListener("click", clearBulkSelectedDates);
 document.querySelectorAll(".tab-button").forEach((button) => {
   button.addEventListener("click", () => {
-    const tab = button.dataset.tab;
-    if (tab === "settings") {
-      settingsDialog.showModal();
-      return;
-    }
-    setActiveView(tab);
+    setActiveView(button.dataset.tab);
   });
 });
 
@@ -145,8 +143,8 @@ function renderCalendar() {
       if (date.getMonth() !== currentDate.getMonth()) {
         currentDate = new Date(date.getFullYear(), date.getMonth(), 1);
       }
-      setActiveView("input", false);
       render();
+      openInputDialog();
     });
 
     calendarGrid.append(button);
@@ -206,6 +204,11 @@ function setActiveView(view, shouldRender = true) {
   if (shouldRender) render();
 }
 
+function openInputDialog() {
+  renderDetail();
+  if (!inputDialog.open) inputDialog.showModal();
+}
+
 function applyPreset(preset) {
   if (bulkMode && bulkSelected.size > 0) {
     bulkSelected.forEach((dateKey) => {
@@ -218,6 +221,7 @@ function applyPreset(preset) {
     });
     persistRecords();
     render();
+    if (inputDialog.open) inputDialog.close();
     return;
   }
 
@@ -230,6 +234,7 @@ function applyPreset(preset) {
   };
   persistRecords();
   render();
+  if (inputDialog.open) inputDialog.close();
 }
 
 function saveSelectedDate() {
@@ -251,12 +256,14 @@ function saveSelectedDate() {
   };
   persistRecords();
   render();
+  if (inputDialog.open) inputDialog.close();
 }
 
 function clearSelectedDate() {
   delete records[selectedDateKey];
   persistRecords();
   render();
+  if (inputDialog.open) inputDialog.close();
 }
 
 function toggleBulkMode() {
