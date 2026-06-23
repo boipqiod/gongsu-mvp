@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공수 캘린더 MVP</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="top-panel">
+        <div>
+          <p class="eyebrow">현장 공수 기록장 v0.1</p>
+          <h1>공수 캘린더</h1>
+        </div>
+        <button class="icon-button" id="settingsButton" type="button" aria-label="설정 열기">설정</button>
+      </section>
+
+      <section class="mobile-view is-active" data-view="calendar">
+        <div class="summary-grid" aria-label="월간 요약">
+          <article class="summary-card">
+            <span>이번 달 총 공수</span>
+            <strong id="totalWork">0</strong>
+          </article>
+          <article class="summary-card">
+            <span>예상 지급액</span>
+            <strong id="expectedPay">0원</strong>
+          </article>
+          <article class="summary-card">
+            <span>기록된 날짜</span>
+            <strong id="recordedDays">0일</strong>
+          </article>
+        </div>
+
+        <div class="calendar-panel">
+          <div class="calendar-toolbar">
+            <button class="nav-button" id="prevMonth" type="button" aria-label="이전 달">‹</button>
+            <div class="month-title">
+              <strong id="monthTitle">2026년 6월</strong>
+              <span id="savedStatus">자동 저장됨</span>
+            </div>
+            <button class="nav-button" id="nextMonth" type="button" aria-label="다음 달">›</button>
+          </div>
+
+          <div class="weekday-row" aria-hidden="true">
+            <span>일</span>
+            <span>월</span>
+            <span>화</span>
+            <span>수</span>
+            <span>목</span>
+            <span>금</span>
+            <span>토</span>
+          </div>
+
+          <div class="calendar-grid" id="calendarGrid" aria-label="월간 공수 달력"></div>
+        </div>
+      </section>
+
+      <section class="mobile-view" data-view="input">
+        <div class="quick-panel" aria-label="빠른 입력">
+          <div class="section-title">
+            <h2>원터치 프리셋</h2>
+            <span>날짜 선택 후 바로 적용</span>
+          </div>
+          <div class="preset-row" id="presetRow"></div>
+          <div class="bulk-toolbar">
+            <button class="ghost-button" id="bulkModeButton" type="button">일괄 선택 켜기</button>
+            <span id="bulkStatus">선택 0일</span>
+            <button class="ghost-button" id="clearBulkButton" type="button">선택 삭제</button>
+          </div>
+        </div>
+
+        <div class="detail-panel" id="detailPanel" aria-label="날짜 상세 기록">
+          <div class="section-title">
+            <h2 id="selectedDateTitle">날짜를 선택하세요</h2>
+            <span id="selectedDateSub">공수와 메모를 남길 수 있습니다</span>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              <span>공수</span>
+              <input id="workInput" type="number" min="0" max="3" step="0.25" inputmode="decimal" placeholder="예: 1.5" />
+            </label>
+            <label>
+              <span>근무 구분</span>
+              <input id="labelInput" type="text" maxlength="12" placeholder="예: 연장" />
+            </label>
+          </div>
+
+          <label class="memo-field">
+            <span>디테일 히스토리 메모</span>
+            <textarea id="memoInput" rows="4" placeholder="예: 우천 대기 후 오후 투입, OO팀장 지시로 P3라인 2시간 연장"></textarea>
+          </label>
+
+          <div class="action-row">
+            <button class="primary-button" id="saveButton" type="button">저장</button>
+            <button class="ghost-button" id="clearDateButton" type="button">선택 날짜 삭제</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile-view" data-view="team">
+        <div class="notice-panel">
+          <div class="section-title">
+            <h2>팀 공수 예고</h2>
+            <span>MVP 데모용</span>
+          </div>
+          <div class="team-notice">
+            <strong>조장 확정 공수</strong>
+            <p>오늘 1.5공수 · P3 라인 돌발 연장 포함</p>
+            <button id="applyTeamNotice" type="button">내 달력에 반영</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-tabs" aria-label="하단 탭">
+      <button class="tab-button is-active" type="button" data-tab="calendar">달력</button>
+      <button class="tab-button" type="button" data-tab="input">입력</button>
+      <button class="tab-button" type="button" data-tab="team">팀</button>
+      <button class="tab-button" type="button" data-tab="settings">설정</button>
+    </nav>
+
+    <dialog class="settings-dialog" id="settingsDialog">
+      <form method="dialog">
+        <div class="dialog-head">
+          <div>
+            <p class="eyebrow">설정</p>
+            <h2>계산 기준</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="설정 닫기">닫기</button>
+        </div>
+
+        <label class="full-field">
+          <span>1공수 단가</span>
+          <input id="rateInput" type="number" min="0" step="1000" inputmode="numeric" />
+        </label>
+
+        <div class="sample-actions">
+          <button id="seedButton" class="ghost-button" type="button">샘플 데이터 넣기</button>
+          <button id="resetButton" class="danger-button" type="button">전체 초기화</button>
+        </div>
+
+        <p class="help-text">데이터는 이 브라우저의 localStorage에만 저장됩니다.</p>
+      </form>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
